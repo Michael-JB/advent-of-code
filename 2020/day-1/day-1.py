@@ -15,21 +15,19 @@ def find_pair_for_sum(values, target):
     remainder = target - value
     if remainder in values:
       return value, remainder
-  return None
 
 def solve_part_1(values):
   solution = find_pair_for_sum(values, 2020)
   if solution is not None:
     return solution[0] * solution[1]
-  return None
 
 def solve_part_2(values):
+  # Here we perform a nested loop. Alternatively, we could compute the cartesian product of `values` to avoid nesting.
   for value in values:
     remainder = 2020 - value
     solution = find_pair_for_sum(values, remainder)
     if solution is not None:
       return value * solution[0] * solution[1]
-  return None
 
 def main():
   # Parse arguments
