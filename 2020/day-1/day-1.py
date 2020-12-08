@@ -3,8 +3,11 @@
 import argparse
 
 """
-Part 1: Find the product of a pair    of numbers in the input such that their sum is 2020
-Part 2: Find the product of a triplet of numbers in the input such that their sum is 2020
+Part 1:
+Find the product of a pair    of numbers in the input such that their sum is 2020
+
+Part 2:
+Find the product of a triplet of numbers in the input such that their sum is 2020
 
 Assumption by me: the same number can be used multiple times, e.g. an input containing 1010.
 """
