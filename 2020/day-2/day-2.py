@@ -44,7 +44,6 @@ def main():
   parser.add_argument('input', help='a text file containing the Advent of Code problem input')
   args = parser.parse_args()
 
-  # Read input into a set (fast lookup, duplicates are not a concern)
   with open(args.input) as input_file:
     values = list(tuple(value.split(': ')) for value in input_file.readlines())
     parsed_values = [(parse_policy(value[0]), value[1].strip()) for value in values]
