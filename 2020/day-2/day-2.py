@@ -18,6 +18,7 @@ indexed by the policy
 Assumption: well-formed input
 """
 
+# This could be improved with RegEx, and it would be nicer to store the data in a more structured manner
 def parse_policy(policy):
   dash_split = policy.split('-')
   first_number = int(dash_split[0])
@@ -28,7 +29,7 @@ def parse_policy(policy):
 
 def validate_with_count_policy(policy, password):
   count = password.count(policy[2])
-  return count >= policy[0] and count <= policy[1]
+  return policy[0] <= count <= policy[1]
 
 def validate_with_index_policy(policy, password):
   extracted_letters = password[policy[0] - 1] + password[policy[1] - 1]
