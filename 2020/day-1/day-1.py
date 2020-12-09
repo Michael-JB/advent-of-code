@@ -9,7 +9,8 @@ Find the product of a pair    of numbers in the input such that their sum is 202
 Part 2:
 Find the product of a triplet of numbers in the input such that their sum is 2020
 
-Assumption by me: the same number can be used multiple times, e.g. an input containing 1010.
+Assumption: the input is well-formed, and the same number can be used multiple times,
+e.g. an input containing 1010.
 """
 
 # Finds two numbers in `values` which sum to `target`
@@ -25,7 +26,8 @@ def solve_part_1(values):
     return solution[0] * solution[1]
 
 def solve_part_2(values):
-  # Here we perform a nested loop. Alternatively, we could compute the cartesian product of `values` to avoid nesting.
+  # Here we perform a nested loop. Alternatively, we could compute the cartesian product
+  # of `values` to avoid nesting.
   for value in values:
     remainder = 2020 - value
     solution = find_pair_for_sum(values, remainder)
