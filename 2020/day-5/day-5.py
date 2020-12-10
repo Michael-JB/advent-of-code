@@ -23,21 +23,14 @@ Find the only id s.t. both (id-1) amd (id+1) are valid ids in the input
 Assumption: well-formed input
 """
 
-# Returns the row and column, respectively, encoded by the input
+# Returns the unique id encoded by the input
 def decode(code):
-  row_low, row_high = 0, 127
-  col_low, col_high = 0, 7
+  row = binary_string_to_int(code[:7], 'F', 'B')
+  col = binary_string_to_int(code[7:], 'L', 'R')
+  return row * 8 + col
 
-  for letter in code:
-    if   letter == 'F': row_high = row_low + math.floor((row_high - row_low) / 2)
-    elif letter == 'B': row_low = row_low + math.ceil((row_high - row_low) / 2)
-    elif letter == 'L': col_high = col_low + math.floor((col_high - col_low) / 2)
-    elif letter == 'R': col_low = col_low + math.ceil((col_high - col_low) / 2)
-
-  return row_low, col_low
-
-def compute_id(row, column):
-  return row * 8 + column
+def binary_string_to_int(code, low_letter, high_letter):
+  return int(code.replace(low_letter, '0').replace(high_letter, '1'), 2)
 
 def main():
   # Parse arguments
@@ -48,8 +41,7 @@ def main():
   with open(args.input) as input_file:
     codes = [row.strip() for row in input_file.readlines()]
 
-    decoded_codes = [decode(code) for code in codes]
-    ids = [compute_id(row, column) for row, column in decoded_codes]
+    ids = [decode(code) for code in codes]
 
     # Solve problems
     print("Solution to part 1:", max(ids))
