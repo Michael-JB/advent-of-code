@@ -28,11 +28,8 @@ def parse_file(input_file_name):
     if current_group != []: groups.append(current_group)
   return groups
 
-def count_occurrences(letter, list_of_strings):
-  return len([string for string in list_of_strings if letter in string])
-
-def count_shared_letters(group):
-  return len([l for l in set("".join(group)) if count_occurrences(l, group) == len(group)])
+def count_answers(groups, set_function):
+  return sum([len(set_function(*map(set, group))) for group in groups])
 
 def main():
   # Parse arguments
@@ -43,11 +40,8 @@ def main():
   groups = parse_file(args.input)
 
   # Solve problems
-  unique_counts = sum(map(lambda group : len(set("".join(group))), groups))
-  print("Solution to part 1:", unique_counts)
-
-  shared_counts = sum(map(count_shared_letters, groups))
-  print("Solution to part 2:", shared_counts)
+  print("Solution to part 1:", count_answers(groups, set.union))
+  print("Solution to part 2:", count_answers(groups, set.intersection))
 
 if __name__ == '__main__':
   main()
