@@ -2,6 +2,8 @@
 
 My solutions to [Advent of Code](https://adventofcode.com/2020/about).
 
+*Note:* these solutions assume that inputs are well-formed and contain a valid solution, unless otherwise specified. As such, nice-to-haves like error handling remain unimplemented.
+
 The solutions are written in Python 3. To run the scripts, pass them to your Python interpreter:
 
 ```
