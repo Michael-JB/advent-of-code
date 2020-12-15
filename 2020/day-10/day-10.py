@@ -29,10 +29,9 @@ def count_alternative_permutations(joltages, mem={}):
   current_joltage, remaining_joltages, permutations = joltages[0], joltages[1:], 0
   candidate_next_joltages = filter(lambda j : current_joltage + 3 >= j, remaining_joltages[:3])
   for i, joltage in enumerate(candidate_next_joltages):
-    if i > 0: permutations = permutations + 1
     if joltage not in mem:
       mem[joltage] = count_alternative_permutations(remaining_joltages[i:], mem)
-    permutations = permutations + mem[joltage]
+    permutations = permutations + mem[joltage] + (1 if i > 0 else 0)
   return permutations
 
 def main():
